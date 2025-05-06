@@ -12,6 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as UseSyncExternalStoreIndexImport } from './routes/use-sync-external-store/index'
+import { Route as SubscribePatternIndexImport } from './routes/subscribe-pattern/index'
+import { Route as SubscribePatternRxJsIndexImport } from './routes/subscribe-pattern/rx-js/index'
+import { Route as SubscribePatternObserverPatternIndexImport } from './routes/subscribe-pattern/observer-pattern/index'
+import { Route as SubscribePatternEventEmitterIndexImport } from './routes/subscribe-pattern/event-emitter/index'
 
 // Create/Update Routes
 
@@ -21,15 +25,69 @@ const UseSyncExternalStoreIndexRoute = UseSyncExternalStoreIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const SubscribePatternIndexRoute = SubscribePatternIndexImport.update({
+  id: '/subscribe-pattern/',
+  path: '/subscribe-pattern/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SubscribePatternRxJsIndexRoute = SubscribePatternRxJsIndexImport.update({
+  id: '/subscribe-pattern/rx-js/',
+  path: '/subscribe-pattern/rx-js/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SubscribePatternObserverPatternIndexRoute =
+  SubscribePatternObserverPatternIndexImport.update({
+    id: '/subscribe-pattern/observer-pattern/',
+    path: '/subscribe-pattern/observer-pattern/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const SubscribePatternEventEmitterIndexRoute =
+  SubscribePatternEventEmitterIndexImport.update({
+    id: '/subscribe-pattern/event-emitter/',
+    path: '/subscribe-pattern/event-emitter/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/subscribe-pattern/': {
+      id: '/subscribe-pattern/'
+      path: '/subscribe-pattern'
+      fullPath: '/subscribe-pattern'
+      preLoaderRoute: typeof SubscribePatternIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/use-sync-external-store/': {
       id: '/use-sync-external-store/'
       path: '/use-sync-external-store'
       fullPath: '/use-sync-external-store'
       preLoaderRoute: typeof UseSyncExternalStoreIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/subscribe-pattern/event-emitter/': {
+      id: '/subscribe-pattern/event-emitter/'
+      path: '/subscribe-pattern/event-emitter'
+      fullPath: '/subscribe-pattern/event-emitter'
+      preLoaderRoute: typeof SubscribePatternEventEmitterIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/subscribe-pattern/observer-pattern/': {
+      id: '/subscribe-pattern/observer-pattern/'
+      path: '/subscribe-pattern/observer-pattern'
+      fullPath: '/subscribe-pattern/observer-pattern'
+      preLoaderRoute: typeof SubscribePatternObserverPatternIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/subscribe-pattern/rx-js/': {
+      id: '/subscribe-pattern/rx-js/'
+      path: '/subscribe-pattern/rx-js'
+      fullPath: '/subscribe-pattern/rx-js'
+      preLoaderRoute: typeof SubscribePatternRxJsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -38,33 +96,71 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
+  '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
+  '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
+  '/subscribe-pattern/observer-pattern': typeof SubscribePatternObserverPatternIndexRoute
+  '/subscribe-pattern/rx-js': typeof SubscribePatternRxJsIndexRoute
 }
 
 export interface FileRoutesByTo {
+  '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
+  '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
+  '/subscribe-pattern/observer-pattern': typeof SubscribePatternObserverPatternIndexRoute
+  '/subscribe-pattern/rx-js': typeof SubscribePatternRxJsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/subscribe-pattern/': typeof SubscribePatternIndexRoute
   '/use-sync-external-store/': typeof UseSyncExternalStoreIndexRoute
+  '/subscribe-pattern/event-emitter/': typeof SubscribePatternEventEmitterIndexRoute
+  '/subscribe-pattern/observer-pattern/': typeof SubscribePatternObserverPatternIndexRoute
+  '/subscribe-pattern/rx-js/': typeof SubscribePatternRxJsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/use-sync-external-store'
+  fullPaths:
+    | '/subscribe-pattern'
+    | '/use-sync-external-store'
+    | '/subscribe-pattern/event-emitter'
+    | '/subscribe-pattern/observer-pattern'
+    | '/subscribe-pattern/rx-js'
   fileRoutesByTo: FileRoutesByTo
-  to: '/use-sync-external-store'
-  id: '__root__' | '/use-sync-external-store/'
+  to:
+    | '/subscribe-pattern'
+    | '/use-sync-external-store'
+    | '/subscribe-pattern/event-emitter'
+    | '/subscribe-pattern/observer-pattern'
+    | '/subscribe-pattern/rx-js'
+  id:
+    | '__root__'
+    | '/subscribe-pattern/'
+    | '/use-sync-external-store/'
+    | '/subscribe-pattern/event-emitter/'
+    | '/subscribe-pattern/observer-pattern/'
+    | '/subscribe-pattern/rx-js/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
+  SubscribePatternIndexRoute: typeof SubscribePatternIndexRoute
   UseSyncExternalStoreIndexRoute: typeof UseSyncExternalStoreIndexRoute
+  SubscribePatternEventEmitterIndexRoute: typeof SubscribePatternEventEmitterIndexRoute
+  SubscribePatternObserverPatternIndexRoute: typeof SubscribePatternObserverPatternIndexRoute
+  SubscribePatternRxJsIndexRoute: typeof SubscribePatternRxJsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  SubscribePatternIndexRoute: SubscribePatternIndexRoute,
   UseSyncExternalStoreIndexRoute: UseSyncExternalStoreIndexRoute,
+  SubscribePatternEventEmitterIndexRoute:
+    SubscribePatternEventEmitterIndexRoute,
+  SubscribePatternObserverPatternIndexRoute:
+    SubscribePatternObserverPatternIndexRoute,
+  SubscribePatternRxJsIndexRoute: SubscribePatternRxJsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +173,27 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/use-sync-external-store/"
+        "/subscribe-pattern/",
+        "/use-sync-external-store/",
+        "/subscribe-pattern/event-emitter/",
+        "/subscribe-pattern/observer-pattern/",
+        "/subscribe-pattern/rx-js/"
       ]
+    },
+    "/subscribe-pattern/": {
+      "filePath": "subscribe-pattern/index.tsx"
     },
     "/use-sync-external-store/": {
       "filePath": "use-sync-external-store/index.tsx"
+    },
+    "/subscribe-pattern/event-emitter/": {
+      "filePath": "subscribe-pattern/event-emitter/index.tsx"
+    },
+    "/subscribe-pattern/observer-pattern/": {
+      "filePath": "subscribe-pattern/observer-pattern/index.tsx"
+    },
+    "/subscribe-pattern/rx-js/": {
+      "filePath": "subscribe-pattern/rx-js/index.tsx"
     }
   }
 }

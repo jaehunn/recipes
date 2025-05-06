@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/use-sync-external-store/')({
+export const Route = createFileRoute('/subscribe-pattern/')({
   component: RouteComponent,
 })
 
