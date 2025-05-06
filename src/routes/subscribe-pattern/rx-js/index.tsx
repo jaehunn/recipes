@@ -9,7 +9,13 @@ export const Route = createFileRoute('/subscribe-pattern/rx-js/')({
 })
 
 function RouteComponent() {
-  return <App />
+  return (
+    <div>
+      <h1>RxJS</h1>
+
+      <App />
+    </div>
+  )
 }
 
 export function App() {

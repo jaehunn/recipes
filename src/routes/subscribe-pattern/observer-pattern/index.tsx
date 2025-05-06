@@ -7,7 +7,13 @@ export const Route = createFileRoute('/subscribe-pattern/observer-pattern/')({
 })
 
 function RouteComponent() {
-  return <App />
+  return (
+    <div>
+      <h1>Observer Pattern</h1>
+
+      <App />
+    </div>
+  )
 }
 
 function App() {
