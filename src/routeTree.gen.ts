@@ -16,6 +16,8 @@ import { Route as SubscribePatternIndexImport } from './routes/subscribe-pattern
 import { Route as SubscribePatternRxJsIndexImport } from './routes/subscribe-pattern/rx-js/index'
 import { Route as SubscribePatternObserverPatternIndexImport } from './routes/subscribe-pattern/observer-pattern/index'
 import { Route as SubscribePatternEventEmitterIndexImport } from './routes/subscribe-pattern/event-emitter/index'
+import { Route as ProjectsTestimonialCardIndexImport } from './routes/projects/testimonial-card/index'
+import { Route as ConceptsDebounceIndexImport } from './routes/concepts/debounce/index'
 
 // Create/Update Routes
 
@@ -51,6 +53,19 @@ const SubscribePatternEventEmitterIndexRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const ProjectsTestimonialCardIndexRoute =
+  ProjectsTestimonialCardIndexImport.update({
+    id: '/projects/testimonial-card/',
+    path: '/projects/testimonial-card/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const ConceptsDebounceIndexRoute = ConceptsDebounceIndexImport.update({
+  id: '/concepts/debounce/',
+  path: '/concepts/debounce/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -67,6 +82,20 @@ declare module '@tanstack/react-router' {
       path: '/use-sync-external-store'
       fullPath: '/use-sync-external-store'
       preLoaderRoute: typeof UseSyncExternalStoreIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/concepts/debounce/': {
+      id: '/concepts/debounce/'
+      path: '/concepts/debounce'
+      fullPath: '/concepts/debounce'
+      preLoaderRoute: typeof ConceptsDebounceIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/projects/testimonial-card/': {
+      id: '/projects/testimonial-card/'
+      path: '/projects/testimonial-card'
+      fullPath: '/projects/testimonial-card'
+      preLoaderRoute: typeof ProjectsTestimonialCardIndexImport
       parentRoute: typeof rootRoute
     }
     '/subscribe-pattern/event-emitter/': {
@@ -98,6 +127,8 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
+  '/concepts/debounce': typeof ConceptsDebounceIndexRoute
+  '/projects/testimonial-card': typeof ProjectsTestimonialCardIndexRoute
   '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
   '/subscribe-pattern/observer-pattern': typeof SubscribePatternObserverPatternIndexRoute
   '/subscribe-pattern/rx-js': typeof SubscribePatternRxJsIndexRoute
@@ -106,6 +137,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
+  '/concepts/debounce': typeof ConceptsDebounceIndexRoute
+  '/projects/testimonial-card': typeof ProjectsTestimonialCardIndexRoute
   '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
   '/subscribe-pattern/observer-pattern': typeof SubscribePatternObserverPatternIndexRoute
   '/subscribe-pattern/rx-js': typeof SubscribePatternRxJsIndexRoute
@@ -115,6 +148,8 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/subscribe-pattern/': typeof SubscribePatternIndexRoute
   '/use-sync-external-store/': typeof UseSyncExternalStoreIndexRoute
+  '/concepts/debounce/': typeof ConceptsDebounceIndexRoute
+  '/projects/testimonial-card/': typeof ProjectsTestimonialCardIndexRoute
   '/subscribe-pattern/event-emitter/': typeof SubscribePatternEventEmitterIndexRoute
   '/subscribe-pattern/observer-pattern/': typeof SubscribePatternObserverPatternIndexRoute
   '/subscribe-pattern/rx-js/': typeof SubscribePatternRxJsIndexRoute
@@ -125,6 +160,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/subscribe-pattern'
     | '/use-sync-external-store'
+    | '/concepts/debounce'
+    | '/projects/testimonial-card'
     | '/subscribe-pattern/event-emitter'
     | '/subscribe-pattern/observer-pattern'
     | '/subscribe-pattern/rx-js'
@@ -132,6 +169,8 @@ export interface FileRouteTypes {
   to:
     | '/subscribe-pattern'
     | '/use-sync-external-store'
+    | '/concepts/debounce'
+    | '/projects/testimonial-card'
     | '/subscribe-pattern/event-emitter'
     | '/subscribe-pattern/observer-pattern'
     | '/subscribe-pattern/rx-js'
@@ -139,6 +178,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/subscribe-pattern/'
     | '/use-sync-external-store/'
+    | '/concepts/debounce/'
+    | '/projects/testimonial-card/'
     | '/subscribe-pattern/event-emitter/'
     | '/subscribe-pattern/observer-pattern/'
     | '/subscribe-pattern/rx-js/'
@@ -148,6 +189,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   SubscribePatternIndexRoute: typeof SubscribePatternIndexRoute
   UseSyncExternalStoreIndexRoute: typeof UseSyncExternalStoreIndexRoute
+  ConceptsDebounceIndexRoute: typeof ConceptsDebounceIndexRoute
+  ProjectsTestimonialCardIndexRoute: typeof ProjectsTestimonialCardIndexRoute
   SubscribePatternEventEmitterIndexRoute: typeof SubscribePatternEventEmitterIndexRoute
   SubscribePatternObserverPatternIndexRoute: typeof SubscribePatternObserverPatternIndexRoute
   SubscribePatternRxJsIndexRoute: typeof SubscribePatternRxJsIndexRoute
@@ -156,6 +199,8 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   SubscribePatternIndexRoute: SubscribePatternIndexRoute,
   UseSyncExternalStoreIndexRoute: UseSyncExternalStoreIndexRoute,
+  ConceptsDebounceIndexRoute: ConceptsDebounceIndexRoute,
+  ProjectsTestimonialCardIndexRoute: ProjectsTestimonialCardIndexRoute,
   SubscribePatternEventEmitterIndexRoute:
     SubscribePatternEventEmitterIndexRoute,
   SubscribePatternObserverPatternIndexRoute:
@@ -175,6 +220,8 @@ export const routeTree = rootRoute
       "children": [
         "/subscribe-pattern/",
         "/use-sync-external-store/",
+        "/concepts/debounce/",
+        "/projects/testimonial-card/",
         "/subscribe-pattern/event-emitter/",
         "/subscribe-pattern/observer-pattern/",
         "/subscribe-pattern/rx-js/"
@@ -185,6 +232,12 @@ export const routeTree = rootRoute
     },
     "/use-sync-external-store/": {
       "filePath": "use-sync-external-store/index.tsx"
+    },
+    "/concepts/debounce/": {
+      "filePath": "concepts/debounce/index.tsx"
+    },
+    "/projects/testimonial-card/": {
+      "filePath": "projects/testimonial-card/index.tsx"
     },
     "/subscribe-pattern/event-emitter/": {
       "filePath": "subscribe-pattern/event-emitter/index.tsx"
