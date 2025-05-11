@@ -18,6 +18,7 @@ import { Route as SubscribePatternObserverPatternIndexImport } from './routes/su
 import { Route as SubscribePatternEventEmitterIndexImport } from './routes/subscribe-pattern/event-emitter/index'
 import { Route as ConceptsDebounceIndexImport } from './routes/concepts/debounce/index'
 import { Route as ComponentsSignupFormIndexImport } from './routes/components/signup-form/index'
+import { Route as ComponentsNestedCheckboxIndexImport } from './routes/components/nested-checkbox/index'
 import { Route as ComponentsContactFormIndexImport } from './routes/components/contact-form/index'
 
 // Create/Update Routes
@@ -66,6 +67,13 @@ const ComponentsSignupFormIndexRoute = ComponentsSignupFormIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ComponentsNestedCheckboxIndexRoute =
+  ComponentsNestedCheckboxIndexImport.update({
+    id: '/components/nested-checkbox/',
+    path: '/components/nested-checkbox/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const ComponentsContactFormIndexRoute = ComponentsContactFormIndexImport.update(
   {
     id: '/components/contact-form/',
@@ -97,6 +105,13 @@ declare module '@tanstack/react-router' {
       path: '/components/contact-form'
       fullPath: '/components/contact-form'
       preLoaderRoute: typeof ComponentsContactFormIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/components/nested-checkbox/': {
+      id: '/components/nested-checkbox/'
+      path: '/components/nested-checkbox'
+      fullPath: '/components/nested-checkbox'
+      preLoaderRoute: typeof ComponentsNestedCheckboxIndexImport
       parentRoute: typeof rootRoute
     }
     '/components/signup-form/': {
@@ -143,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
   '/components/contact-form': typeof ComponentsContactFormIndexRoute
+  '/components/nested-checkbox': typeof ComponentsNestedCheckboxIndexRoute
   '/components/signup-form': typeof ComponentsSignupFormIndexRoute
   '/concepts/debounce': typeof ConceptsDebounceIndexRoute
   '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
@@ -154,6 +170,7 @@ export interface FileRoutesByTo {
   '/subscribe-pattern': typeof SubscribePatternIndexRoute
   '/use-sync-external-store': typeof UseSyncExternalStoreIndexRoute
   '/components/contact-form': typeof ComponentsContactFormIndexRoute
+  '/components/nested-checkbox': typeof ComponentsNestedCheckboxIndexRoute
   '/components/signup-form': typeof ComponentsSignupFormIndexRoute
   '/concepts/debounce': typeof ConceptsDebounceIndexRoute
   '/subscribe-pattern/event-emitter': typeof SubscribePatternEventEmitterIndexRoute
@@ -166,6 +183,7 @@ export interface FileRoutesById {
   '/subscribe-pattern/': typeof SubscribePatternIndexRoute
   '/use-sync-external-store/': typeof UseSyncExternalStoreIndexRoute
   '/components/contact-form/': typeof ComponentsContactFormIndexRoute
+  '/components/nested-checkbox/': typeof ComponentsNestedCheckboxIndexRoute
   '/components/signup-form/': typeof ComponentsSignupFormIndexRoute
   '/concepts/debounce/': typeof ConceptsDebounceIndexRoute
   '/subscribe-pattern/event-emitter/': typeof SubscribePatternEventEmitterIndexRoute
@@ -179,6 +197,7 @@ export interface FileRouteTypes {
     | '/subscribe-pattern'
     | '/use-sync-external-store'
     | '/components/contact-form'
+    | '/components/nested-checkbox'
     | '/components/signup-form'
     | '/concepts/debounce'
     | '/subscribe-pattern/event-emitter'
@@ -189,6 +208,7 @@ export interface FileRouteTypes {
     | '/subscribe-pattern'
     | '/use-sync-external-store'
     | '/components/contact-form'
+    | '/components/nested-checkbox'
     | '/components/signup-form'
     | '/concepts/debounce'
     | '/subscribe-pattern/event-emitter'
@@ -199,6 +219,7 @@ export interface FileRouteTypes {
     | '/subscribe-pattern/'
     | '/use-sync-external-store/'
     | '/components/contact-form/'
+    | '/components/nested-checkbox/'
     | '/components/signup-form/'
     | '/concepts/debounce/'
     | '/subscribe-pattern/event-emitter/'
@@ -211,6 +232,7 @@ export interface RootRouteChildren {
   SubscribePatternIndexRoute: typeof SubscribePatternIndexRoute
   UseSyncExternalStoreIndexRoute: typeof UseSyncExternalStoreIndexRoute
   ComponentsContactFormIndexRoute: typeof ComponentsContactFormIndexRoute
+  ComponentsNestedCheckboxIndexRoute: typeof ComponentsNestedCheckboxIndexRoute
   ComponentsSignupFormIndexRoute: typeof ComponentsSignupFormIndexRoute
   ConceptsDebounceIndexRoute: typeof ConceptsDebounceIndexRoute
   SubscribePatternEventEmitterIndexRoute: typeof SubscribePatternEventEmitterIndexRoute
@@ -222,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   SubscribePatternIndexRoute: SubscribePatternIndexRoute,
   UseSyncExternalStoreIndexRoute: UseSyncExternalStoreIndexRoute,
   ComponentsContactFormIndexRoute: ComponentsContactFormIndexRoute,
+  ComponentsNestedCheckboxIndexRoute: ComponentsNestedCheckboxIndexRoute,
   ComponentsSignupFormIndexRoute: ComponentsSignupFormIndexRoute,
   ConceptsDebounceIndexRoute: ConceptsDebounceIndexRoute,
   SubscribePatternEventEmitterIndexRoute:
@@ -244,6 +267,7 @@ export const routeTree = rootRoute
         "/subscribe-pattern/",
         "/use-sync-external-store/",
         "/components/contact-form/",
+        "/components/nested-checkbox/",
         "/components/signup-form/",
         "/concepts/debounce/",
         "/subscribe-pattern/event-emitter/",
@@ -259,6 +283,9 @@ export const routeTree = rootRoute
     },
     "/components/contact-form/": {
       "filePath": "components/contact-form/index.tsx"
+    },
+    "/components/nested-checkbox/": {
+      "filePath": "components/nested-checkbox/index.tsx"
     },
     "/components/signup-form/": {
       "filePath": "components/signup-form/index.tsx"
